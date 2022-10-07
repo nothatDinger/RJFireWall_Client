@@ -27,7 +27,7 @@ pub enum Commands{
           long_about = None,arg_required_else_help(true))]
 pub struct Add {
     #[arg(short, long, action = clap::ArgAction::Set,
-        help="<src_net> <dst_net> <src_port> <dst_port> <protocol> <action> <log>")]
+        help="<src_net> <dst_net> <src_port_min> <src_port_max> <dst_port_min> <dst_port_max> <protocol> <action> <log>")]
     rule: Option<String>,
     #[arg(short, long, action = clap::ArgAction::Set,
         help="<src_ip> <nat_ip>")]

@@ -19,9 +19,9 @@ impl FromStr for Rule {
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         let words: Vec<&str> = s.trim_start_matches("Rule: ").split_whitespace().collect();
         let src_net = words[0].parse::<Ipv4Network>()?;
-        let dst_net = words[1].parse::<Ipv4Network>()?;
-        let src_port_min = words[2].parse::<u32>()?;
-        let src_port_max = words[3].parse::<u32>()?;
+        let src_port_min = words[1].parse::<u32>()?;
+        let src_port_max = words[2].parse::<u32>()?;
+        let dst_net = words[3].parse::<Ipv4Network>()?;
         let dst_port_min = words[4].parse::<u32>()?;
         let dst_port_max = words[5].parse::<u32>()?;
         let protocol = words[6].parse::<TransportType>()?;
