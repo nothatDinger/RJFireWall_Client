@@ -186,8 +186,8 @@ pub fn cmd_add_rule(r: crate::rule::Rule) -> KernelResponse{
         name.into_raw() ,
         src_net.into_raw() ,
         dst_net.into_raw(),
-        r.src_port,
-        r.dst_port, 
+        (r.src_port_min << 16) | (r.src_port_max & 0xffff),
+        (r.dst_port_min << 16) | (r.dst_port_max & 0xffff),
         r.protocol.into(), 
         r.log,
         r.action)
