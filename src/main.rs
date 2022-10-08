@@ -71,12 +71,20 @@ fn main() {
             if let Some(rule) = &add.rule{
                 println!("add rule: {}", rule);
                 let rule = rule.parse::<Rule>().unwrap();
-                cmd_add_rule(rule);
+                unsafe{
+                    client::dealResponseAtCmd(
+                        cmd_add_rule(rule)
+                    );
+                }
             }
             if let Some(nat) = &add.nat{
                 println!("add nat rule: {}", nat);
                 let nat = nat.parse::<NatRule>().unwrap();
-                cmd_add_nat_rule(nat);
+                unsafe{
+                    client::dealResponseAtCmd(
+                        cmd_add_nat_rule(nat)
+                    );
+                }
             }
 
         }

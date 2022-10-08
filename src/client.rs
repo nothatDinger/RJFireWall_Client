@@ -173,6 +173,7 @@ use std::io::stdin;
 use std::ffi::CString;
 
 pub fn cmd_add_rule(r: crate::rule::Rule) -> KernelResponse{
+    println!("please name the rule:");
     let mut name = String::new();
     stdin().read_line(&mut name).unwrap();
 
