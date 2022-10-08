@@ -14,9 +14,9 @@ impl FromStr for NatRule {
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         let words: Vec<&str> = s.trim_start_matches("NatRule: ").split_whitespace().collect();
         let src_net = words[0].parse::<Ipv4Network>()?;
-        let dst_ip = words[1].parse::<Ipv4Network>()?;
-        let min_port = words[2].parse::<u16>()?;
-        let max_port = words[3].parse::<u16>()?;
+        let min_port = words[1].parse::<u16>()?;
+        let max_port = words[2].parse::<u16>()?;
+        let dst_ip = words[3].parse::<Ipv4Network>()?;
         Ok( NatRule{ src_net, dst_ip, min_port, max_port })
     }
 }

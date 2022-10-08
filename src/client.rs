@@ -176,7 +176,7 @@ pub fn cmd_add_rule(r: crate::rule::Rule) -> KernelResponse{
     println!("please name the rule:");
     let mut name = String::new();
     stdin().read_line(&mut name).unwrap();
-    
+
     println!("add rule after [enter for adding at head]:");
     let mut after_name = String::new();
     stdin().read_line(&mut after_name).unwrap();
@@ -207,37 +207,3 @@ pub fn cmd_add_nat_rule(r: crate::nat::NatRule)-> KernelResponse{
         addNATRule(sip.into_raw(), nat_ip.into_raw(), r.min_port, r.max_port)
     }
 }
-
-// pub const RSP_ONLY_HEAD: u32 = 10;
-// pub const RSP_MSG: u32 = 11;
-// pub const RSP_IPRULES: u32 = 12;
-// pub const RSP_IPLOGS: u32 = 13;
-// pub const RSP_NATRULES: u32 = 14;
-// pub const RSP_CONN_LOGS: u32 = 15;
-// pub fn show_result(r: KernelResponse){
-//     if r.code < 0 {
-//         return;
-//     }
-//     unsafe{
-//         match (*r.header).bodyTp {
-//             RSP_ONLY_HEAD => {
-//                 println!("succeeded to delete {} rules.\n",(*r.header).arrayLen);
-//             }
-//             RSP_MSG => {
-//                 println!("From Kernel: {}\n",Box::from_raw(r.body as *mut &str));
-//             }
-//             RSP_IPRULES => {
-//                 showRules(r.body, (*r.header).arrayLen)
-//             }
-//             RSP_NATRULES => {
-            
-//             }
-//             RSP_CONN_LOGS => {
-            
-//             }
-//             _ => {
-            
-//             }
-//         }
-//     }
-// }
