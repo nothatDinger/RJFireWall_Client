@@ -30,7 +30,7 @@ pub struct Add {
         help="<src_net> <dst_net> <src_port_min> <src_port_max> <dst_port_min> <dst_port_max> <protocol> <action> <log>")]
     rule: Option<String>,
     #[arg(short, long, action = clap::ArgAction::Set,
-        help="<src_ip> <nat_ip> <min_port> <max_port> ")]
+        help="<src_ip> <src_min_port> <src_max_port> <nat_ip>  ")]
     nat: Option<String>,
 
 }
