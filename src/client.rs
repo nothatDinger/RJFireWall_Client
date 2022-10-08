@@ -176,8 +176,12 @@ pub fn cmd_add_rule(r: crate::rule::Rule) -> KernelResponse{
     println!("please name the rule:");
     let mut name = String::new();
     stdin().read_line(&mut name).unwrap();
+    
+    println!("add rule after [enter for adding at head]:");
+    let mut after_name = String::new();
+    stdin().read_line(&mut after_name).unwrap();
 
-    let after = CString::new('\n'.to_string()).expect("CString::new failed");
+    let after = CString::new(after_name.trim()).expect("CString::new failed");
     let name = CString::new(name.trim()).expect("CString::new failed");
     let src_net = CString::new(r.src_net.to_string()).expect("CString::new failed");
     let dst_net = CString::new(r.dst_net.to_string()).expect("CString::new failed");
