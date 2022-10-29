@@ -4,9 +4,11 @@ use num_enum::IntoPrimitive;
 #[derive(Debug,IntoPrimitive)]
 #[repr(u8)]
 pub enum TransportType {
-    Tcp=0,
-    Udp,
+    Any=0,
     Icmp,
+    Tcp=6,
+    Udp=17,
+    
 }
 impl Default for TransportType {
     fn default() -> TransportType {
@@ -16,6 +18,7 @@ impl Default for TransportType {
 impl fmt::Display for TransportType {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
+            TransportType::Any => write!(f,"any"),
             TransportType::Tcp => write!(f,"TCP"),
             TransportType::Udp => write!(f,"UDP"),
             TransportType::Icmp => write!(f,"ICMP")
@@ -39,6 +42,7 @@ impl FromStr for TransportType {
     type Err = ParseTransportTypeError;
     fn from_str(s: &str) -> Result<Self, Self::Err> {   
         match s {
+            "any" => Ok(TransportType::Any),
             "TCP" => Ok(TransportType::Tcp),
             "UDP" => Ok(TransportType::Udp),
             "ICMP" => Ok(TransportType::Icmp),

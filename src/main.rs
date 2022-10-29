@@ -128,7 +128,7 @@ fn main() {
   
         }
         Commands::Default => {
-            println!("default");
+            println!("default accept all");
             unsafe{
                 setDefaultAction(0);
             }
